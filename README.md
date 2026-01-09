@@ -5,6 +5,7 @@ Listing a table of contents this early feels ambitious.
 
 - [Info](#info)
 - [Usage](#usage)
+- [Acknowledgements](Acknowledgements)
 
 ## Info
 
@@ -19,3 +20,7 @@ PSModulePath. It defaults to the CurrentUser scope, but can be specified to inst
 InstallPowershellModules.ps1 -Scope system
 ```
 
+## Acknowledgements
+- Moose
+- Bob
+- BJDS, for the project name I yoinked
