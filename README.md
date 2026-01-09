@@ -5,7 +5,7 @@ Listing a table of contents this early feels ambitious.
 
 - [Info](#info)
 - [Usage](#usage)
-- [Acknowledgements](Acknowledgements)
+- [Acknowledgements](#acknowledgements)
 
 ## Info
 
