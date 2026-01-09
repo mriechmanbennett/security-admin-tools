@@ -1,4 +1,4 @@
-function Get-DefenderAVExclusions() {
+function Get-AVExclusions() {
 	[CmdletBinding()]
 	param(
 		[Parameter(Mandatory=$false)]
@@ -6,7 +6,7 @@ function Get-DefenderAVExclusions() {
 	)
 
 	$Preferences = $null
-	if ($Computer -eq $env:COMPUTERNAME){
+	if ($Computer -eq $env:COMPUTERNAME) {
 		$Preferences = Get-MpPreference
 	}
 	else {
@@ -44,7 +44,7 @@ function Get-DefenderAVExclusions() {
 	} 
 }
 
-function Get-DefenderASRExclusions() {
+function Get-ASRExclusions() {
 	[CmdletBinding()]
 	param(
 		[Parameter(Mandatory=$false)]
