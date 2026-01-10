@@ -1,0 +1,70 @@
+[CmdletBinding()]
+    param(
+        # Name for the new module
+        [Parameter(Mandatory=$true, Position=0)]
+        [String]$ModuleName,
+
+        # Path for the new module directory to be built in
+        # Default path assumes script is run from its location in the git repository
+	    [Parameter(Mandatory=$false)]
+	    [String]$ParentPath = (
+            (Get-Item -Path "..\powershell\modules" | Select-Object $_.FullName).ToString()
+        ),
+
+        # Argument for the manifest author name
+        # Defaults to my name b/c lazy
+        [Parameter(Mandatory=$false)]
+        [String]$Author = "Matt Riechman-Bennett",
+        
+        # Argument for the manifest description
+        [Parameter(Mandatory=$false)]
+        [String]$Description = "New module",
+
+        # Argument for the manifest company name
+        [Parameter(Mandatory=$false)]
+        [String]$CompanyName = "security-admin-tools",
+
+        # Argument for the manifest starting version
+        [Parameter(Mandatory=$false)]
+        [String]$ModuleVersion = "0.0.1"
+    )
+
+# Variables for files to create
+$NewModulePath = $ParentPath + "\" + $ModuleName
+$NewModuleRootDirectories = @('private','public')
+$NewModuleRootFiles = @("$ModuleName.psm1")
+
+# Options for the call to New-ModuleManifest
+$FunctionsToExport = '*'
+$CmdletsToExport = '*'
+$VariablesToExport = '*'
+
+# Break if module directory already exists
+if (Test-Path -Path $NewModulePath) { break }
+
+# Create module directory and initial files
+New-Item $NewModulePath -ItemType Directory
+
+Foreach ($DirectoryName in $NewModuleRootDirectories) {
+    $ThisPath = $NewModulePath + "\$DirectoryName"
+    New-Item -Path $ThisPath -ItemType Directory
+}
+
+Foreach ($FileName in $NewModuleRootFiles) {
+    $ThisPath = $NewModulePath + "\$FileName"
+    New-Item -Path $ThisPath -ItemType File
+}
+
+# Create manifest file
+New-ModuleManifest  -Path "$NewModulePath\$ModuleName.psd1" `
+                    -RootModule "$ModuleName.psm1" `
+                    -Description $Description `
+                    -ModuleVersion $ModuleVersion `
+                    -Author $Author `
+                    -CompanyName $CompanyName `
+                    -FunctionsToExport $FunctionsToExport `
+                    -CmdletsToExport $CmdletsToExport `
+                    -VariablesToExport $VariablesToExport
+
+# Create root module file
+Get-Content -Path "files/RootModuleTemplate.txt" | Out-File -FilePath "$NewModulePath\$ModuleName.psm1"

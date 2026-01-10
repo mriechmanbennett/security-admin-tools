@@ -14,7 +14,7 @@ Initial development goals are to make scripts I use for work more flexible.
 
 ## Usage
 
-The script [InstallPowershellModules.ps1](scripts-meta/InstallPowershellModules.ps1) will copy the module files into your
+The script [InstallPowershellModules.ps1](InstallPowershellModules.ps1) will copy the module files into your
 PSModulePath. It defaults to the CurrentUser scope, but can be specified to install for all users with:
 ```
 InstallPowershellModules.ps1 -Scope system
