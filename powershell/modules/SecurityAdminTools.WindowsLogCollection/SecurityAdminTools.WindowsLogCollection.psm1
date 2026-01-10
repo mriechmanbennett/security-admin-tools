@@ -11,12 +11,7 @@ function Get-RDPLogs() {
 	$LogName = 'Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational' 
     $LogFilter = '<QueryList><Query Id="0"><Select>*[System[EventID=1149]]</Select></Query></QueryList>'
 
-    $RDPAuths = if ($Computer -eq $env:COMPUTERNAME) {
-        Get-WinEvent -LogName $LogName -FilterXPath $LogFilter
-    }
-    else {
-        Get-WinEvent -LogName $LogName -FilterXPath $LogFilter -ComputerName $Computer
-    }
+    $RDPAuths = Get-WinEvent -LogName $LogName -FilterXPath $LogFilter -ComputerName $Computer
 	
     [xml[]]$xml = $RDPAuths | Foreach-Object {$_.ToXml()}
 	$EventData = Foreach ($LogEvent in $xml.Event) {
