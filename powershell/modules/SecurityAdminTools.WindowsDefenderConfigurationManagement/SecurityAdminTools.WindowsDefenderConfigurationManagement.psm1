@@ -1,82 +1,19 @@
-function Get-AVExclusions() {
-	[CmdletBinding()]
-	param(
-		[Parameter(Mandatory=$false)]
-		[String]$Computer = $env:COMPUTERNAME
-	)
+# Get public and private function definition files.
+    $Public  = @( Get-ChildItem -Path $PSScriptRoot\public\*.ps1 -ErrorAction SilentlyContinue )
+    $Private = @( Get-ChildItem -Path $PSScriptRoot\private\*.ps1 -ErrorAction SilentlyContinue )
 
-	$Preferences = $null
-	if ($Computer -eq $env:COMPUTERNAME) {
-		$Preferences = Get-MpPreference
-	}
-	else {
-		$RemoteSession = New-CimSession -ComputerName $Computer
-		$Preferences = Get-MpPreference -CimSession $RemoteSession
-	}
+# Dot source the files
+    Foreach($import in @($Public + $Private))
+    {
+        Try
+        {
+            . $import.fullname
+        }
+        Catch
+        {
+            Write-Error -Message "Failed to import function $($import.fullname): $_"
+        }
+    }
 
-	# Display the ExclusionPath list
-	Write-Host "Exclusion Paths:"
-	if ($Preferences.ExclusionPath) {
-		$Preferences.ExclusionPath | ForEach-Object { Write-Host "- $_" }
-	}
-	else {
-		Write-Host "No exclusion paths configured."
-	}
-	Write-Host ""
-
-	# Display the ExclusionProcess list 
-	Write-Host "Exclusion Processes:" 
-	if ($Preferences.ExclusionProcess) { 
-		$Preferences.ExclusionProcess | ForEach-Object { Write-Host "- $_" } 
-	}
-	else {
-		Write-Host "No exclusion processes configured." 
-	} 
-	Write-Host "" 
-
-	# Display the ExclusionExtension list 
-	Write-Host "Exclusion Extensions:" 
-	if ($Preferences.ExclusionExtension) { 
-		$Preferences.ExclusionExtension | ForEach-Object { Write-Host "- $_" } 
-	}
-	else { 
-		Write-Host "No exclusion extensions configured." 
-	} 
-}
-
-function Get-ASRExclusions() {
-	[CmdletBinding()]
-	param(
-		[Parameter(Mandatory=$false)]
-		[String]$Computer = $env:COMPUTERNAME
-	)
-
-	$Preferences = $null
-	if ($Computer -eq $env:COMPUTERNAME){
-		$Preferences = Get-MpPreference
-	}
-	else {
-		$RemoteSession = New-CimSession -ComputerName $Computer
-		$Preferences = Get-MpPreference -CimSession $RemoteSession
-	}
-
-	# Display the ASR general exclusions
-	Write-Host "ASR General Exclusions:"
-	if ($Preferences.AttackSurfaceReductionOnlyExclusions) {
-		$Preferences.AttackSurfaceReductionOnlyExclusions | ForEach-Object { Write-Host "- $_" }
-	}
-	else {
-		Write-Host "No ASR general exclusions configured."
-	}
-	Write-Host ""
-
-	# Display the ASR rule-specific exclusions
-	Write-Host "ASR Rule-Specific Exclusions:"
-	if ($Preferences.AttackSurfaceReductionRules_RuleSpecificExclusions) {
-		$Preferences.AttackSurfaceReductionRules_RuleSpecificExclusions | ForEach-Object { Write-Host "- $_" }
-	}
-	else {
-		Write-Host "No ASR general exclusions configured."
-	}
-	Write-Host ""
-}
+# Export public functions
+Export-ModuleMember -Function $Public.Basename
