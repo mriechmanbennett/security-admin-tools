@@ -18,7 +18,7 @@ function New-Script() {
         )
 
 
-    $ScriptTemplate = {
+    $ScriptTemplate =
 "function $ScriptName {
     <#
     .SYNOPSIS
@@ -58,7 +58,6 @@ function New-Script() {
 
 }
 "
-    }
 
     $ScriptTemplate | Out-File -FilePath ".\$ScriptName.ps1"
 }
