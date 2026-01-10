@@ -5,7 +5,7 @@
     )
 
 Set-Location $PSScriptRoot
-$ModulesPath = "..\powershell\modules"
+$ModulesPath = "powershell\modules"
 
 $InstallPath = if ($Scope -eq "system") { 
     "$Env:ProgramFiles\WindowsPowerShell\Modules\"
