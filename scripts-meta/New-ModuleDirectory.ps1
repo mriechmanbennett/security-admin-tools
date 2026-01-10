@@ -8,7 +8,7 @@
         # Default path assumes script is run from its location in the git repository
 	    [Parameter(Mandatory=$false)]
 	    [String]$ParentPath = (
-            (Get-Item -Path "..\powershell\modules" | Select-Object $_.FullName).ToString()
+            (Get-Item -Path "$PSScriptRoot\..\powershell\modules" | Select-Object $_.FullName).ToString()
         ),
 
         # Argument for the manifest author name
@@ -40,7 +40,7 @@ $CmdletsToExport = '*'
 $VariablesToExport = '*'
 
 # Break if module directory already exists
-if (Test-Path -Path $NewModulePath) { break }
+if (Test-Path -Path $NewModulePath) { Write-Output "Module name already exists"; break }
 
 # Create module directory and initial files
 New-Item $NewModulePath -ItemType Directory
@@ -67,4 +67,4 @@ New-ModuleManifest  -Path "$NewModulePath\$ModuleName.psd1" `
                     -VariablesToExport $VariablesToExport
 
 # Create root module file
-Get-Content -Path "files/RootModuleTemplate.txt" | Out-File -FilePath "$NewModulePath\$ModuleName.psm1"
+Get-Content -Path "$PSScriptRoot\files\RootModuleTemplate.txt" | Out-File -FilePath "$NewModulePath\$ModuleName.psm1"
