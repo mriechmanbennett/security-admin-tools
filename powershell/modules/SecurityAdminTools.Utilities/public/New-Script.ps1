@@ -69,12 +69,27 @@ function New-Script() {
 
 
     # Determine if we were passed a script name or full path for the new script file
-    if ($ScriptNameOrPath -contains "\"){
+    if ( $ScriptNameOrPath.Contains("\") ) {
+        # Throw error if path is not syntactically valid
+        if ( !(Test-Path -Path $ScriptNameOrPath -IsValid) ) {
+            throw "Path is not valid"
+        }
+
         if ( $ScriptNameOrPath.EndsWith(".ps1") ){
             # if this is a path not in the current directory, and it ends with the file name
+            $ScriptPath = $ScriptNameOrPath
+            $ScriptFileName = Split-Path $ScriptPath -Leaf
+            $ScriptName = $ScriptFileName.Trim('.ps1')
+            
+            # Throw error if the new path does not exist
+            $ScriptParentPath = Split-Path $ScriptNameOrPath -Parent
+            if ( !(Test-Path -Path $ScriptParentPath) ) {
+                throw "Path does not exist"
+            }
         }
         else {
             # If this is a path not in the current directory, and ends without .ps1
+            throw "Valid .ps1 file name must be specified as part of the path"
         }
     }
     else {
@@ -133,4 +148,5 @@ function New-Script() {
 
 
     $ScriptTemplate | Out-File -FilePath $ScriptPath
+    Write-Output $ScriptPath
 }
