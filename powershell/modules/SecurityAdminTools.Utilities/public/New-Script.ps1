@@ -1,4 +1,38 @@
 function New-Script() {
+    <#
+    .SYNOPSIS
+        $Synopsis
+
+    .DESCRIPTION
+        $Description
+
+    .PARAMETER ScriptNameOrPath
+        First position argument, takes a string with the desired script name or a path
+        for the new script file. Path can be relative or absolute.
+
+    .PARAMETER Synopsis
+        String that populates the Synopsis text. Defaults to filler.
+
+    .PARAMETER Description
+        String that populates the Description text. Defaults to filler.
+
+    .PARAMETER Link
+        String that populates the Link text. Defaults to a generic URL.
+        If the variable $EnvNewScriptLink is set, it will use that instead.
+
+    .EXAMPLE
+        New-Script
+        Creates a new script in the current directory with filler default options.
+
+    .EXAMPLE
+        New-Script Get-ExampleScript
+        Creates a new script in the current directory with the name Get-ExampleScript.ps1.
+
+    .LINK
+        https://github.com/mriechmanbennett/security-admin-tools/
+
+    #>
+
     [CmdletBinding()]
     param(
         # Name for the new script
@@ -20,9 +54,9 @@ function New-Script() {
     
     if ([string]::IsNullOrWhiteSpace($Link)) {
         $Link = if ([string]::IsNullOrEmpty($EnvNewScriptLink)) {
-            'https://www.aclu.org/give/ways-to-give'
+            'https://www.aclu.org/give/ways-to-give/'
         } else {
-            $env:NewScriptLink
+            $EnvNewScriptLink
         }
     }
 
