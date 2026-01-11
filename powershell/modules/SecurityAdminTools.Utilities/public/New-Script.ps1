@@ -3,7 +3,7 @@ function New-Script() {
         param(
             # Name for the new script
             [Parameter(Mandatory=$false, Position=0)]
-            [String]$ScriptName = 'New-ExampleScript',
+            [String]$ScriptNameOrPath = 'New-ExampleScript',
 
             # Synopsis
             [Parameter(Mandatory=$false)]
@@ -16,6 +16,19 @@ function New-Script() {
             [Parameter(Mandatory=$false)]
             [String]$Link = "https://github.com/mriechmanbennett/security-admin-tools/"
         )
+
+    # Determine if we were passed a script name or full path for the new script file
+    if ($ScriptNameOrPath -contains "\"){
+        if ( $ScriptNameOrPath.EndsWith(".ps1") ){
+            # if this is a path not in the current directory, and it ends with the file name
+        }
+        else {
+            # If this is a path not in the current directory, and ends without .ps1
+        }
+    }
+    else {
+        if ( $ScriptNameOrPath.EndsWith(".ps1") )
+    }
 
 
     $ScriptTemplate =
@@ -58,6 +71,7 @@ function New-Script() {
 
 }
 "
+
 
     $ScriptTemplate | Out-File -FilePath ".\$ScriptName.ps1"
 }
