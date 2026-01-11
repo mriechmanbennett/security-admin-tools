@@ -1,10 +1,12 @@
 function New-Script() {
     <#
     .SYNOPSIS
-        $Synopsis
+        Create new Powershell script file containing a basic template.
 
     .DESCRIPTION
-        $Description
+        Create new Powershell script file containing a basic template.
+        Takes a script name or a path to where the new script file should be created.
+        A path name should include the desired script file name itself.
 
     .PARAMETER ScriptNameOrPath
         First position argument, takes a string with the desired script name or a path
@@ -27,6 +29,11 @@ function New-Script() {
     .EXAMPLE
         New-Script Get-ExampleScript
         Creates a new script in the current directory with the name Get-ExampleScript.ps1.
+    
+    .EXAMPLE
+        New-Script Folder\Here\Get-ExampleScript.ps1
+        Creates a new script named Get-ExampleScript at the relative
+        path "Folder\Here\Get-ExampleScript.ps1"
 
     .LINK
         https://github.com/mriechmanbennett/security-admin-tools/
