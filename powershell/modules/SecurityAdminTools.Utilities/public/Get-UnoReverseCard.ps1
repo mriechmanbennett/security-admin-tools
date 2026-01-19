@@ -159,8 +159,8 @@ function Get-UnoReverseCard() {
                                                                                                     "
 	}
 
-	if ($Size -ieq "large") { Write-Output $LargeUnoReverseASCII
-	} elseif ($Size -ieq "medium") { Write-Output $MediumUnoReverseASCII
-	} else { Write-Output $SmallUnoReverseASCII}
+	if ($Size -ieq "large") { Write-Output $LargeUnoReverseASCII }
+    elseif ($Size -ieq "medium") { Write-Output $MediumUnoReverseASCII }
+    else { Write-Output $SmallUnoReverseASCII }
 
 }
