@@ -26,7 +26,11 @@
 
         # Argument for the manifest starting version
         [Parameter(Mandatory=$false)]
-        [String]$ModuleVersion = "0.0.1"
+        [String]$ModuleVersion = "0.0.1",
+
+        # Argument for CompatiblePSEditions
+        [Parameter(Mandatory=$false)]
+        [String[]]$CompatiblePSEditions = @('Desktop','Core')
     )
 
 # Variables for files to create
@@ -64,7 +68,8 @@ New-ModuleManifest  -Path "$NewModulePath\$ModuleName.psd1" `
                     -CompanyName $CompanyName `
                     -FunctionsToExport $FunctionsToExport `
                     -CmdletsToExport $CmdletsToExport `
-                    -VariablesToExport $VariablesToExport
+                    -VariablesToExport $VariablesToExport `
+                    -CompatiblePSEditions $CompatiblePSEditions
 
 # Create root module file
 Get-Content -Path "$PSScriptRoot\files\RootModuleTemplate.txt" | Out-File -FilePath "$NewModulePath\$ModuleName.psm1"
