@@ -29,7 +29,15 @@ param(
 
 #------------ Script start ------------#
 # Import dependencies
-try { Import-Module platyPS }
+# $platyPSModuleName = 'Microsoft.PowerShell.PlatyPS'
+#try { Get-InstalledModule -Name Microsoft.PowerShell.PlatyPS }
+#catch { Write-Host "platyPS not installed. Attempting to install..."
+#    try { Install-PSResource -Name Microsoft.PowerShell.PlatyPS }
+#    catch { Write-Host "Failed to install platyPS, exiting"; exit }
+#}
+#finally { Write-Host "platyPS module is installed" }
+
+try { Import-Module -Name Microsoft.PowerShell.PlatyPS }
 catch { Write-Host "platyPS module could not be imported"; exit }
 finally { Write-Host "Imported platyPS module" }
 
@@ -37,10 +45,17 @@ finally { Write-Host "Imported platyPS module" }
 $RepositoryPath = (Get-Item -Path $PSScriptRoot).Parent
 $DocsPath = "$RepositoryPath\docs"
 $PSModuleDocsPath = "$DocsPath\powershell-module-docs"
-$ModulesFolderPath = "$RepositoryPath\powershell\modules"
+$PSModulesFolderPath = "$RepositoryPath\powershell\modules"
 
 # Get list of modules and import them to this session
-$ModuleList = @( (Get-ChildItem -Path $ModulesFolderPath -Directory).BaseName )
+$ModuleList = @( (Get-ChildItem -Path $PSModulesFolderPath -Directory).BaseName )
 
 # Write module documentation
-New-MarkdownHelp -Force -Module $ModuleList -OutputFolder $PSModuleDocsPath
+# New-MarkdownHelp -Force -Module $ModuleList -OutputFolder $PSModuleDocsPath
+
+$newMarkdownCommandHelpSplat = @{
+    ModuleInfo = Get-Module -Name 'SecurityAdminTools.Utilities'
+    OutputFolder = $PSModuleDocsPath
+    WithModulePage = $true
+}
+New-MarkdownCommandHelp -Force @newMarkdownCommandHelpSplat
