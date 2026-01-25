@@ -53,9 +53,11 @@ $ModuleList = @( (Get-ChildItem -Path $PSModulesFolderPath -Directory).BaseName 
 # Write module documentation
 # New-MarkdownHelp -Force -Module $ModuleList -OutputFolder $PSModuleDocsPath
 
-$newMarkdownCommandHelpSplat = @{
-    ModuleInfo = Get-Module -Name 'SecurityAdminTools.Utilities'
-    OutputFolder = $PSModuleDocsPath
-    WithModulePage = $true
+foreach ($ModuleName in $ModuleList) {
+    $newMarkdownCommandHelpSplat = @{
+        ModuleInfo = Get-Module -Name $ModuleName
+        OutputFolder = $PSModuleDocsPath
+        WithModulePage = $true
+    }
+    New-MarkdownCommandHelp -Force @newMarkdownCommandHelpSplat
 }
-New-MarkdownCommandHelp -Force @newMarkdownCommandHelpSplat
