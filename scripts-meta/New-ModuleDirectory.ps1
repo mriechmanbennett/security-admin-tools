@@ -22,7 +22,7 @@
 
         # Argument for the manifest company name
         [Parameter(Mandatory=$false)]
-        [String]$CompanyName = "security-admin-tools",
+        [String]$CompanyName = "Company name",
 
         # Argument for the manifest starting version
         [Parameter(Mandatory=$false)]
@@ -35,10 +35,16 @@
 
 # Set optional $SAT2_Var default values
 if ($Author -eq 'Unknown') {
-        $Author = if ( !([string]::IsNullOrEmpty($SAT2_Var.AuthorName)) ) {
-            $($SAT2_Var.AuthorName)
-        }
+    if ( !([string]::IsNullOrEmpty($SAT2_Var.AuthorName)) ) {
+    $Author = $SAT2_Var.AuthorName
     }
+}
+
+if ($CompanyName -eq 'Company name') {
+    if ( !([string]::IsNullOrEmpty($SAT2_Var.CompanyName)) ) {
+        $CompanyName = $SAT2_Var.CompanyName
+    }
+}
 
 # Variables for files to create
 $NewModulePath = $ParentPath + "\" + $ModuleName
