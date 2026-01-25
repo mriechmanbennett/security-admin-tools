@@ -1,4 +1,5 @@
-# 
+# Used in scripts-meta\Set-SecAdminToolsVars.ps1
+# Copy in this directory without the example suffix to use
 $SAT2_Var_New = @{
     SAT2VarsSet = $true
     #AuthorName = 'Jean Tarrou'
