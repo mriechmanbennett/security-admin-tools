@@ -14,7 +14,7 @@
         # Argument for the manifest author name
         # Defaults to my name b/c lazy
         [Parameter(Mandatory=$false)]
-        [String]$Author = "Matt Riechman-Bennett",
+        [String]$Author = "Unknown",
         
         # Argument for the manifest description
         [Parameter(Mandatory=$false)]
@@ -32,6 +32,13 @@
         [Parameter(Mandatory=$false)]
         [String[]]$CompatiblePSEditions = @('Desktop','Core')
     )
+
+# Set optional $SAT2_Var default values
+if ($Author -eq 'Unknown') {
+        $Author = if ( !([string]::IsNullOrEmpty($SAT2_Var.AuthorName)) ) {
+            $($SAT2_Var.AuthorName)
+        }
+    }
 
 # Variables for files to create
 $NewModulePath = $ParentPath + "\" + $ModuleName

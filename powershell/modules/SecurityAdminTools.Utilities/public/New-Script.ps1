@@ -20,7 +20,7 @@ function New-Script() {
 
     .PARAMETER Link
         String that populates the Link text. Defaults to a generic URL.
-        If the variable $EnvNewScriptLink is set, it will use that instead.
+        If the variable $SAT2_Var.NewScriptLink is set, it will use that instead.
 
     .EXAMPLE
         New-Script
@@ -60,10 +60,10 @@ function New-Script() {
 
     
     if ([string]::IsNullOrWhiteSpace($Link)) {
-        $Link = if ([string]::IsNullOrEmpty($EnvNewScriptLink)) {
+        $Link = if ([string]::IsNullOrEmpty($SAT2_Var.NewScriptLink)) {
             'https://www.aclu.org/give/ways-to-give/'
         } else {
-            $EnvNewScriptLink
+            $($SAT2_Var.NewScriptLink)
         }
     }
 

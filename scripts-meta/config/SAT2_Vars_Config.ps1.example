@@ -1,10 +1,10 @@
 # Used in scripts-meta\Set-SecAdminToolsVars.ps1
 # Copy in this directory without the example suffix to use
-$SAT2_Var_New = @{
+$SAT2_Var = @{
     SAT2VarsSet = $true
     #AuthorName = 'Jean Tarrou'
     #CompanyName = 'security-admin-tools'
     #NewScriptLink = 'https://www.aclu.org/give/ways-to-give/'
 }
 
-return $SAT2_Var_New
+return $SAT2_Var
