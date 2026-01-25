@@ -42,6 +42,7 @@ No attempt will be made at Mac compatibility because I don't happen to own one.
 ## Documentation
 
 Documentation root can be found [here](./docs/README.md)
+
 Powershell module documentation is [here](./docs/powershell-module-docs/README.md)
 
 ## Acknowledgements
