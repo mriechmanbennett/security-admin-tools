@@ -7,6 +7,7 @@ Listing a table of contents this early feels ambitious.
 - [Info](#info)
 - [Usage](#usage)
 - [Compatibility](#compatibility)
+- [Documentation](#documentation)
 - [Acknowledgements](#acknowledgements)
 
 ## Info
@@ -38,10 +39,16 @@ and easily usable on both Debian and Arch-based distros for remote management of
 
 No attempt will be made at Mac compatibility because I don't happen to own one.
 
+## Documentation
+
+Documentation root can be found [here](./docs/README.md)
+Powershell module documentation is [here](./docs/powershell-module-docs/README.md)
+
 ## Acknowledgements
 
 The below people have provided either scripts or ideas used in this project.
 
 - Moose
 - Bob
+- Brian L
 - BJDS, for the project name I yoinked as a joke
