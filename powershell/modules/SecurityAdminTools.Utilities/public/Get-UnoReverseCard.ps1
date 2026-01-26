@@ -1,4 +1,30 @@
 function Get-UnoReverseCard() {
+  <#
+    .SYNOPSIS
+        Print ASCII art of an Uno reverse card
+
+    .DESCRIPTION
+        Print ASCII art of an Uno reverse card
+        There is no point to this, it is a dumb joke script
+
+    .PARAMETER Size
+      Specify size to print out
+    
+    .PARAMETER Name
+      Give the command a name to print out
+
+    .EXAMPLE
+        Get-UnoReverseCard
+
+    .EXAMPLE
+        Get-UnoReverseCard -Size large
+
+        Print a large size Uno reverse card
+
+    .LINK
+        https://github.com/mriechmanbennett/security-admin-tools/
+
+    #>
 	[CmdletBinding()]
 	param(
 		[Parameter(Mandatory=$false, Position=0)]

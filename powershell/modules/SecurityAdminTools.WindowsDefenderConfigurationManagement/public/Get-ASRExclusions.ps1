@@ -1,4 +1,27 @@
 function Get-ASRExclusions() {
+	<#
+    .SYNOPSIS
+        Get Defender ASR exclusions from a computer
+
+    .DESCRIPTION
+        Get Defender ASR exclusions from a computer
+
+    .PARAMETER Computer
+        Computer from which to retrieve configuration
+
+    .EXAMPLE
+        Get-ASRExclusions
+
+    .EXAMPLE
+        Get-ASRExclusions -Computer remote-host
+
+		Gets configuration from computer named 'remote-host'
+
+    .LINK
+        https://github.com/mriechmanbennett/security-admin-tools/
+
+    #>
+
 	[CmdletBinding()]
 	param(
 		[Parameter(Mandatory=$false)]

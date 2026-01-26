@@ -1,4 +1,27 @@
 function Get-AVExclusions() {
+	<#
+    .SYNOPSIS
+        Get Defender AV exclusions from a computer
+
+    .DESCRIPTION
+        Get Defender AV exclusions from a computer
+
+    .PARAMETER Computer
+        Computer from which to retrieve configuration
+
+    .EXAMPLE
+        Get-AVExclusions
+
+    .EXAMPLE
+        Get-AVExclusions -Computer remote-host
+
+		Gets configuration from computer named 'remote-host'
+
+    .LINK
+        https://github.com/mriechmanbennett/security-admin-tools/
+
+    #>
+
 	[CmdletBinding()]
 	param(
 		[Parameter(Mandatory=$false)]
