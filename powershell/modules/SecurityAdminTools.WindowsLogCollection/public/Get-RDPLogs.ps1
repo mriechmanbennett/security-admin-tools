@@ -1,4 +1,29 @@
 function Get-RDPLogs() {
+	<#
+    .SYNOPSIS
+        Pull RDP logs from a computer
+
+    .DESCRIPTION
+        Pull RDP logs from a computer
+
+    .PARAMETER Computer
+        Computer from which to retrieve logs. Defaults to the local device
+
+    .PARAMETER Limit
+        Specify the number of most recent results to return
+
+    .EXAMPLE
+        Get-RDPLogs
+
+    .EXAMPLE
+        Get-RDPLogs -Computer remote-host
+
+		Gets logs from computer named 'remote-host'
+
+    .LINK
+        https://github.com/mriechmanbennett/security-admin-tools/
+
+    #>
 	[CmdletBinding()]
 	param(
 		[Parameter(Mandatory=$false)]
