@@ -27,7 +27,10 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory=$false)]
-    [switch]$NoForce
+    [switch]$NoForce,
+
+    [Parameter(Mandatory=$false)]
+    [switch]$Clean
 )
 
 #------------ Script start ------------#
@@ -47,6 +50,10 @@ $PSModulesFolderPath = "$RepositoryPath\powershell\modules"
 
 # Get list of modules and import them to this session
 $ModuleList = @( (Get-ChildItem -Path $PSModulesFolderPath -Directory).BaseName )
+
+if ($Clean) {
+    Get-ChildItem -Path $PSModuleDocsPath | Remove-Item -Recurse
+}
 
 # Write module documentation
 foreach ($ModuleName in $ModuleList) {
