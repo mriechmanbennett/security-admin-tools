@@ -1,7 +1,10 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $false, Position = 0)]
-    [String]$Scope = "user"
+    [String]$Scope = "user",
+
+    [Parameter(Mandatory=$false)]
+    [switch]$Clean
 )
 
 # Get current directory, then change to script root to execute
@@ -49,6 +52,11 @@ if ($PSVersionTable.PSVersion -lt [Version]'5.1') {
     }
 }
 
+# If Clean
+if ($Clean) {
+    Write-Host 'WARNING: Clean flag only clears out the files copied into the module path. The profile changes are not properly managed.'
+    Get-ChildItem -Path "$InstallPath\SecurityAdminTools.*" | Remove-Item -Recurse
+}
 
 # Install modules and import them in the desired profile
 $ProfilePath = if ($Scope -eq "system") {

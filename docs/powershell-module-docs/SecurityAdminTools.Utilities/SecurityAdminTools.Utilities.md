@@ -22,10 +22,6 @@ Collection of miscellaneous commands
 
 Print ASCII art of an Uno reverse card
 
-### [New-ModuleDocumentation](New-ModuleDocumentation.md)
-
-Generates markdown documentation for every module recursively below a target directory.
-
 ### [New-Script](New-Script.md)
 
 Create new Powershell script file containing a basic template.
