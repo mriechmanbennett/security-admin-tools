@@ -8,14 +8,17 @@
     Powershell modules. This script is brittle; it is only intended
     to work within the context of this project.
 
-.PARAMETER Force
-    Switch parameter; allow overwriting of existing files
+.PARAMETER NoForce
+    Switch parameter; prevent overwriting existing files
+
+.PARAMETER Clean
+    Remove documentation files for modules and commands no longer present in the module.
 
 .EXAMPLE
     Build-Documentation
 
 .EXAMPLE
-    Build-Documentation -Force
+    Build-Documentation -NoForce
 
 .LINK
     https://github.com/mriechmanbennett/security-admin-tools/
@@ -24,18 +27,13 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory=$false)]
-    [switch]$Force
+    [switch]$NoForce
 )
 
 #------------ Script start ------------#
-# Import dependencies
-# $platyPSModuleName = 'Microsoft.PowerShell.PlatyPS'
-#try { Get-InstalledModule -Name Microsoft.PowerShell.PlatyPS }
-#catch { Write-Host "platyPS not installed. Attempting to install..."
-#    try { Install-PSResource -Name Microsoft.PowerShell.PlatyPS }
-#    catch { Write-Host "Failed to install platyPS, exiting"; exit }
-#}
-#finally { Write-Host "platyPS module is installed" }
+
+# Install PlatyPS
+# Install-PSResource -Name Microsoft.PowerShell.PlatyPS
 
 try { Import-Module -Name Microsoft.PowerShell.PlatyPS }
 catch { Write-Host "platyPS module could not be imported"; exit }
@@ -51,8 +49,6 @@ $PSModulesFolderPath = "$RepositoryPath\powershell\modules"
 $ModuleList = @( (Get-ChildItem -Path $PSModulesFolderPath -Directory).BaseName )
 
 # Write module documentation
-# New-MarkdownHelp -Force -Module $ModuleList -OutputFolder $PSModuleDocsPath
-
 foreach ($ModuleName in $ModuleList) {
     $newMarkdownCommandHelpSplat = @{
         ModuleInfo = Get-Module -Name $ModuleName
@@ -61,3 +57,21 @@ foreach ($ModuleName in $ModuleList) {
     }
     New-MarkdownCommandHelp -Force @newMarkdownCommandHelpSplat
 }
+
+# Write parent README.md
+$NewReadme = @"
+# SAT2 Powershell Modules
+
+Documentation for project Powershell modules.
+This README and docs are managed via [script](/../../scripts-meta/Build-Documentation.ps1)
+
+## Index
+
+
+"@
+
+foreach ($ModuleName in $ModuleList) {
+    $NewReadme += "- [$ModuleName](./$ModuleName/$ModuleName.md)" + [Environment]::NewLine
+}
+
+Set-Content -Force -Path "$PSModuleDocsPath\README.md" -Value $NewReadme -NoNewLine
