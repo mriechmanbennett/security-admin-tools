@@ -18,6 +18,10 @@ Collection of miscellaneous commands
 
 ## SecurityAdminTools.Utilities
 
+### [Get-DeviceByPrimaryUser](Get-DeviceByPrimaryUser.md)
+
+Gets Intune primary devices given a user UPN
+
 ### [Get-UnoReverseCard](Get-UnoReverseCard.md)
 
 Print ASCII art of an Uno reverse card
