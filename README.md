@@ -2,8 +2,6 @@
 
 ## Contents
 
-Listing a table of contents this early feels ambitious.
-
 - [Info](#info)
 - [Usage](#usage)
 - [Compatibility](#compatibility)
@@ -13,7 +11,8 @@ Listing a table of contents this early feels ambitious.
 ## Info
 
 This is a side project to learn about Powershell module development.
-Initial development goals are to make scripts I use for work more flexible.
+The initial development goal is to implement convenience scripts I can use for work.
+Release version numbers will follow [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
 ## Usage
 
@@ -24,6 +23,12 @@ specified to install for all users with:
 ```Powershell
 InstallPowershellModules.ps1 -Scope system
 ```
+
+## Documentation
+
+[Main Documentation](./docs/README.md)
+
+[Powershell module documentation](./docs/powershell-module-docs/README.md)
 
 ## Compatibility
 
@@ -38,12 +43,6 @@ No attempt will be made at Linux compatibility unless the CimCmdlets module beco
 and easily usable on both Debian and Arch-based distros for remote management of Windows systems.
 
 No attempt will be made at Mac compatibility because I don't happen to own one.
-
-## Documentation
-
-Documentation root can be found [here](./docs/README.md)
-
-Powershell module documentation is [here](./docs/powershell-module-docs/README.md)
 
 ## Acknowledgements
 
