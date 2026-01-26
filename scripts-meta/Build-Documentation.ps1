@@ -63,7 +63,7 @@ $NewReadme = @"
 # SAT2 Powershell Modules
 
 Documentation for project Powershell modules.
-This README and docs are managed via [script](/../../scripts-meta/Build-Documentation.ps1)
+This README and docs are managed via [script](/../../blob/main/scripts-meta/Build-Documentation.ps1)
 
 ## Index
 
