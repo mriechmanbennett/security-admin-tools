@@ -9,3 +9,5 @@ This README and docs are managed via [script](../../scripts-meta/Build-Documenta
 - [SecurityAdminTools.Utilities](./SecurityAdminTools.Utilities/SecurityAdminTools.Utilities.md)
 - [SecurityAdminTools.WindowsDefenderConfigurationManagement](./SecurityAdminTools.WindowsDefenderConfigurationManagement/SecurityAdminTools.WindowsDefenderConfigurationManagement.md)
 - [SecurityAdminTools.WindowsLogCollection](./SecurityAdminTools.WindowsLogCollection/SecurityAdminTools.WindowsLogCollection.md)
+- [SecurityAdminTools.WindowsUpdateManagement](./SecurityAdminTools.WindowsUpdateManagement/SecurityAdminTools.WindowsUpdateManagement.md)
+- [WindowsOSBuild](./WindowsOSBuild/WindowsOSBuild.md)

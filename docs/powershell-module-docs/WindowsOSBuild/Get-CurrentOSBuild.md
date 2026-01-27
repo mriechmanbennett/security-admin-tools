@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
-external help file: SecurityAdminTools.Utilities-Help.xml
-HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
+external help file: WindowsOSBuild-Help.xml
+HelpUri: ''
 Locale: en-US
-Module Name: SecurityAdminTools.Utilities
+Module Name: WindowsOSBuild
 ms.date: 01/26/2026
 PlatyPS schema version: 2024-05-01
-title: Get-DeviceByPrimaryUser
+title: Get-CurrentOSBuild
 ---
 
-# Get-DeviceByPrimaryUser
+# Get-CurrentOSBuild
 
 ## SYNOPSIS
 
-Gets Intune primary devices given a user UPN
+Gets the currently installed OS Build release information. Supports Windows 10 and Windows Server 2016 onwards. Supports Hotpatch on Windows 11 and Windows Server 2022.
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-DeviceByPrimaryUser [-Upn] <string> [<CommonParameters>]
+Get-CurrentOSBuild [-Detailed] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,33 +30,36 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Gets Intune primary devices given a user UPN
+Installed OS Build number or detailed information (Version, Build, Availability date, Hotpatch, Preview, Out-of-band, Servicing option, KB article, KB URL and Catalog URL).
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-DeviceByPrimaryUser
+Get-CurrentOSBuild
+Show only the build number for the installed OS Build.
 
 ### EXAMPLE 2
 
-Get-DeviceByPrimaryUser username@domain.com
+Get-CurrentOSBuild -Detailed
+Show detailed information for the installed OS Build.
 
 ## PARAMETERS
 
-### -Upn
+### -Detailed
 
-User UPN to search for devices
+This parameter is optional.
+Returns detailed information about the installed OS Build.
 
 ```yaml
-Type: System.String
-DefaultValue: ''
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: 0
-  IsRequired: true
+  Position: Named
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
@@ -78,10 +81,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-Original script contributed by Brian L
-Depends on Microsoft.Graph.Beta.DeviceManagement
-
-
 ## RELATED LINKS
 
-- [](https://github.com/mriechmanbennett/security-admin-tools/)
+{{ Fill in the related links here }}
+
