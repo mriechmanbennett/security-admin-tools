@@ -1,0 +1,4 @@
+[submodule "powershell/modules/WindowsOSBuild"]
+	path = powershell/modules/WindowsOSBuild
+	url = https://github.com/mriechmanbennett/WindowsOSBuild
+	branch = sat2-submodule

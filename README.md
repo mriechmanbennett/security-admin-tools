@@ -16,6 +16,12 @@ Release version numbers will follow [Semantic Versioning v2.0.0](https://semver.
 
 ## Usage
 
+Clone this repository using:
+
+```Powershell
+git clone --recurse-submodules
+```
+
 The script [Install-PowershellModules.ps1](Install-PowershellModules.ps1) will copy the
 module files into your PSModulePath. It defaults to the CurrentUser scope, but can be
 specified to install for all users with:
