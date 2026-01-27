@@ -52,6 +52,8 @@ No attempt will be made at Mac compatibility because I don't happen to own one.
 
 ## Acknowledgements
 
+[Click here](docs/licensed-code.md) for information on third-party projects used and their license terms.
+
 The below people have provided either scripts or ideas used in this project.
 
 - Moose
