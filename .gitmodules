@@ -2,3 +2,7 @@
 	path = powershell/modules/WindowsOSBuild
 	url = https://github.com/mriechmanbennett/WindowsOSBuild
 	branch = sat2-submodule
+[submodule "powershell/modules/MSCatalogLTS"]
+	path = powershell/modules/MSCatalogLTS
+	url = https://github.com/mriechmanbennett/MSCatalogLTS
+	branch = sat2-submodule
