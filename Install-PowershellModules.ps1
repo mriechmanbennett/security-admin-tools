@@ -76,6 +76,9 @@ foreach ($Folder in $ModuleFolders) {
 # Import modules into current session
 Import-Module -Name $ModuleNames -Force
 
+
+<# Commenting out, not needed
+
 # Create Profile if it doesn't exist
 if (!(Test-Path -Path $ProfilePath )) { New-Item -Type File -Path $ProfilePath -Force }
 
@@ -90,6 +93,8 @@ foreach ($NewModule in $ModuleNames) {
     }
     if (!$LineFound) { $ImportLine | out-file $ProfilePath -append }
 }
+
+#>
 
 # Send us back to the original directory the script was called from
 Set-Location $StartDirectory
