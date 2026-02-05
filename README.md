@@ -22,6 +22,12 @@ Clone this repository using:
 git clone --recurse-submodules
 ```
 
+Update submodules with:
+
+```Powershell
+git submodule update --init --recursive
+```
+
 The script [Install-PowershellModules.ps1](Install-PowershellModules.ps1) will copy the
 module files into your PSModulePath. It defaults to the CurrentUser scope, but can be
 specified to install for all users with:
