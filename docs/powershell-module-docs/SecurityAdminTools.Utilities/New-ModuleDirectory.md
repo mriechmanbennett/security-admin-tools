@@ -1,7 +1,7 @@
 ---
 document type: cmdlet
 external help file: SecurityAdminTools.Utilities-Help.xml
-HelpUri: ''
+HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
 Locale: en-US
 Module Name: SecurityAdminTools.Utilities
 ms.date: 02/15/2026
@@ -13,7 +13,7 @@ title: New-ModuleDirectory
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Create a new Powershell module directory skeleton
 
 ## SYNTAX
 
@@ -32,23 +32,25 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Create a new Powershell module directory skeleton
+Uses a template module file.
+Currently very fragile and needs fixed.
 
 ## EXAMPLES
 
-### Example 1
+### EXAMPLE 1
 
-{{ Add example description here }}
+New-ModuleDirectory TestModule
 
 ## PARAMETERS
 
 ### -Author
 
-{{ Fill Author Description }}
+Argument for the manifest author name
 
 ```yaml
 Type: System.String
-DefaultValue: ''
+DefaultValue: Unknown
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -65,11 +67,11 @@ HelpMessage: ''
 
 ### -CompanyName
 
-{{ Fill CompanyName Description }}
+Argument for the manifest company name
 
 ```yaml
 Type: System.String
-DefaultValue: ''
+DefaultValue: Company name
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -86,11 +88,11 @@ HelpMessage: ''
 
 ### -CompatiblePSEditions
 
-{{ Fill CompatiblePSEditions Description }}
+Argument for CompatiblePSEditions
 
 ```yaml
 Type: System.String[]
-DefaultValue: ''
+DefaultValue: "@('Desktop','Core')"
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -107,11 +109,11 @@ HelpMessage: ''
 
 ### -Description
 
-{{ Fill Description Description }}
+Argument for the manifest description
 
 ```yaml
 Type: System.String
-DefaultValue: ''
+DefaultValue: New module
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -128,7 +130,7 @@ HelpMessage: ''
 
 ### -ModuleName
 
-{{ Fill ModuleName Description }}
+Name of the new module
 
 ```yaml
 Type: System.String
@@ -149,11 +151,11 @@ HelpMessage: ''
 
 ### -ModuleVersion
 
-{{ Fill ModuleVersion Description }}
+Argument for the manifest starting version
 
 ```yaml
 Type: System.String
-DefaultValue: ''
+DefaultValue: 0.0.1
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -170,11 +172,15 @@ HelpMessage: ''
 
 ### -ParentPath
 
-{{ Fill ParentPath Description }}
+Path for the new module directory to be built in
+Default path assumes script is run from its location in the git repository
 
 ```yaml
 Type: System.String
-DefaultValue: ''
+DefaultValue: >-
+  (
+              (Get-Location).ToString()
+          )
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -200,15 +206,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
-
-{{ Fill in the Description }}
-
 ## NOTES
-
-{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
-
+- [](https://github.com/mriechmanbennett/security-admin-tools/)

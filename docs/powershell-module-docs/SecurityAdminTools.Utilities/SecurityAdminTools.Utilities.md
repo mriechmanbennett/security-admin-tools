@@ -28,7 +28,7 @@ Print ASCII art of an Uno reverse card
 
 ### [New-ModuleDirectory](New-ModuleDirectory.md)
 
-{{ Fill in the Synopsis }}
+Create a new Powershell module directory skeleton
 
 ### [New-Script](New-Script.md)
 
