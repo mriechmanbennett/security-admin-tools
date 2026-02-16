@@ -1,4 +1,4 @@
-function Get-ASRExclusions() {
+function Get-ASRExclusion() {
 	<#
     .SYNOPSIS
         Get Defender ASR exclusions from a computer
@@ -10,10 +10,10 @@ function Get-ASRExclusions() {
         Computer from which to retrieve configuration
 
     .EXAMPLE
-        Get-ASRExclusions
+        Get-ASRExclusion
 
     .EXAMPLE
-        Get-ASRExclusions -Computer remote-host
+        Get-ASRExclusion -Computer remote-host
 
 		Gets configuration from computer named 'remote-host'
 

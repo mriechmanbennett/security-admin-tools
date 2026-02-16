@@ -1,4 +1,4 @@
-function Get-AVExclusions() {
+function Get-AVExclusion() {
 	<#
     .SYNOPSIS
         Get Defender AV exclusions from a computer
@@ -10,10 +10,10 @@ function Get-AVExclusions() {
         Computer from which to retrieve configuration
 
     .EXAMPLE
-        Get-AVExclusions
+        Get-AVExclusion
 
     .EXAMPLE
-        Get-AVExclusions -Computer remote-host
+        Get-AVExclusion -Computer remote-host
 
 		Gets configuration from computer named 'remote-host'
 
