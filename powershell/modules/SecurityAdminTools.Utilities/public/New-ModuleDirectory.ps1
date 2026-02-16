@@ -9,11 +9,10 @@ function New-ModuleDirectory() {
         # Default path assumes script is run from its location in the git repository
         [Parameter(Mandatory=$false)]
         [String]$ParentPath = (
-            (Get-Item -Path "$PSScriptRoot\..\powershell\modules" | Select-Object $_.FullName).ToString()
+            (Get-Location).ToString()
         ),
     
         # Argument for the manifest author name
-        # Defaults to my name b/c lazy
         [Parameter(Mandatory=$false)]
         [String]$Author = "Unknown",
         
