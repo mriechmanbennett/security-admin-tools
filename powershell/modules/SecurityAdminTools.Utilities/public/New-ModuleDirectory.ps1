@@ -84,7 +84,7 @@ function New-ModuleDirectory() {
         $ThisPath = $NewModulePath + "\$DirectoryName"
         New-Item -Path $ThisPath -ItemType Directory
     }
-    to
+    
     Foreach ($FileName in $NewModuleRootFiles) {
         $ThisPath = $NewModulePath + "\$FileName"
         New-Item -Path $ThisPath -ItemType File
