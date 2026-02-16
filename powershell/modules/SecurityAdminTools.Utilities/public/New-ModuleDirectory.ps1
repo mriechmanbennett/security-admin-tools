@@ -48,7 +48,7 @@ function New-ModuleDirectory() {
     
     # Variables for files to create
     $NewModulePath = $ParentPath + "\" + $ModuleName
-    $NewModuleRootDirectories = @('private','public')
+    $NewModuleRootDirectories = @('private','public','files')
     $NewModuleRootFiles = @("$ModuleName.psm1")
     
     # Options for the call to New-ModuleManifest
@@ -66,7 +66,7 @@ function New-ModuleDirectory() {
         $ThisPath = $NewModulePath + "\$DirectoryName"
         New-Item -Path $ThisPath -ItemType Directory
     }
-    
+    to
     Foreach ($FileName in $NewModuleRootFiles) {
         $ThisPath = $NewModulePath + "\$FileName"
         New-Item -Path $ThisPath -ItemType File
