@@ -38,7 +38,7 @@ function Get-UnoReverseCard() {
 	if ($Name) {Write-Output "Hello, $Name!"}
 	Write-Output ""
 
-	$SmallUnoReverseASCII = {"
+	$SmallUnoReverseASCII = @"
                                                 
                                                 
                                                 
@@ -71,11 +71,11 @@ function Get-UnoReverseCard() {
          @                            @         
                                                 
                                                 
-                                                "
-	}
+                                                
+"@
 
 
-	$MediumUnoReverseASCII = {"
+	$MediumUnoReverseASCII = @"
                                                                       
                                                                       
              ............................................             
@@ -119,12 +119,12 @@ function Get-UnoReverseCard() {
                                                                       
                                                                       
                                                                       
-                                                                      "
-	}
+                                                                      
+"@
 
 
 
-	$LargeUnoReverseASCII = {"
+	$LargeUnoReverseASCII = @"
                                                                                                     
                                                                                                     
                    =............................................................=                   
@@ -182,8 +182,8 @@ function Get-UnoReverseCard() {
                   ................................................................                  
                    =............................................................=                   
                                                                                                     
-                                                                                                    "
-	}
+                                                                                                    
+"@
 
 	if ($Size -ieq "large") { Write-Output $LargeUnoReverseASCII }
     elseif ($Size -ieq "medium") { Write-Output $MediumUnoReverseASCII }
