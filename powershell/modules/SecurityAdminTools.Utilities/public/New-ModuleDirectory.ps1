@@ -1,4 +1,22 @@
 function New-ModuleDirectory() {
+    <#
+    .SYNOPSIS
+        Create a new Powershell module directory skeleton
+
+    .DESCRIPTION
+        Create a new Powershell module directory skeleton
+        Uses a template module file. Currently very fragile and needs fixed.
+
+    .PARAMETER ModuleName
+      Name of the new module
+
+    .EXAMPLE
+        New-ModuleDirectory TestModule
+
+    .LINK
+        https://github.com/mriechmanbennett/security-admin-tools/
+
+    #>
     [CmdletBinding()]
     param(
         # Name for the new module
