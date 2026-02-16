@@ -4,7 +4,7 @@ external help file: SecurityAdminTools.WindowsLogCollection-Help.xml
 HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
 Locale: en-US
 Module Name: SecurityAdminTools.WindowsLogCollection
-ms.date: 01/26/2026
+ms.date: 02/15/2026
 PlatyPS schema version: 2024-05-01
 title: Get-RDPLogs
 ---

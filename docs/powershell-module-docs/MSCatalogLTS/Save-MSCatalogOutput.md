@@ -1,26 +1,27 @@
 ---
 document type: cmdlet
-external help file: SecurityAdminTools.Utilities-Help.xml
-HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
+external help file: MSCatalogLTS-Help.xml
+HelpUri: ''
 Locale: en-US
-Module Name: SecurityAdminTools.Utilities
+Module Name: MSCatalogLTS
 ms.date: 02/15/2026
 PlatyPS schema version: 2024-05-01
-title: Get-UnoReverseCard
+title: Save-MSCatalogOutput
 ---
 
-# Get-UnoReverseCard
+# Save-MSCatalogOutput
 
 ## SYNOPSIS
 
-Print ASCII art of an Uno reverse card
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### __AllParameterSets
+### ByObject
 
 ```
-Get-UnoReverseCard [[-Size] <string>] [[-Name] <string>] [<CommonParameters>]
+Save-MSCatalogOutput [-Update] <Object> -Destination <string> [-WorksheetName <string>]
+ [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,26 +31,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Print ASCII art of an Uno reverse card
-There is no point to this, it is a dumb joke script
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1
 
-Get-UnoReverseCard
-
-### EXAMPLE 2
-
-Get-UnoReverseCard -Size large
-
-Print a large size Uno reverse card
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Name
+### -Destination
 
-Give the command a name to print out
+{{ Fill Destination Description }}
 
 ```yaml
 Type: System.String
@@ -58,8 +52,8 @@ SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: 1
-  IsRequired: false
+  Position: Named
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
@@ -68,18 +62,39 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Size
+### -Update
 
-Specify size to print out
+{{ Fill Update Description }}
+
+```yaml
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ByObject
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -WorksheetName
+
+{{ Fill WorksheetName Description }}
 
 ```yaml
 Type: System.String
-DefaultValue: small
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: 0
+  Position: Named
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -100,8 +115,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Object
+
+{{ Fill in the Description }}
+
 ## NOTES
+
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [](https://github.com/mriechmanbennett/security-admin-tools/)
+{{ Fill in the related links here }}
+

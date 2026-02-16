@@ -5,7 +5,7 @@ HelpInfoUri:
 Locale: en-US
 Module Guid: 251006e1-b832-4e7d-a02e-88815278916d
 Module Name: SecurityAdminTools.WindowsLogCollection
-ms.date: 01/26/2026
+ms.date: 02/15/2026
 PlatyPS schema version: 2024-05-01
 title: SecurityAdminTools.WindowsLogCollection Module
 ---

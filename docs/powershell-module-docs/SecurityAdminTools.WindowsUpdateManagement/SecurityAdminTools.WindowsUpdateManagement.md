@@ -5,7 +5,7 @@ HelpInfoUri:
 Locale: en-US
 Module Guid: 51bc57f8-6f4e-4dd0-ae6f-5b7d61d09403
 Module Name: SecurityAdminTools.WindowsUpdateManagement
-ms.date: 01/26/2026
+ms.date: 02/15/2026
 PlatyPS schema version: 2024-05-01
 title: SecurityAdminTools.WindowsUpdateManagement Module
 ---

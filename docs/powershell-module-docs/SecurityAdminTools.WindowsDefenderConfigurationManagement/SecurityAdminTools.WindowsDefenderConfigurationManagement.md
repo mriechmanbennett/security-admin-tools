@@ -5,7 +5,7 @@ HelpInfoUri:
 Locale: en-US
 Module Guid: d4c39d49-b7ec-4145-8926-d2c41c428a8b
 Module Name: SecurityAdminTools.WindowsDefenderConfigurationManagement
-ms.date: 01/26/2026
+ms.date: 02/15/2026
 PlatyPS schema version: 2024-05-01
 title: SecurityAdminTools.WindowsDefenderConfigurationManagement Module
 ---

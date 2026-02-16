@@ -1,27 +1,28 @@
 ---
 document type: cmdlet
 external help file: SecurityAdminTools.Utilities-Help.xml
-HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
+HelpUri: ''
 Locale: en-US
 Module Name: SecurityAdminTools.Utilities
 ms.date: 02/15/2026
 PlatyPS schema version: 2024-05-01
-title: New-Script
+title: New-ModuleDirectory
 ---
 
-# New-Script
+# New-ModuleDirectory
 
 ## SYNOPSIS
 
-Create new Powershell script file containing a basic template.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-New-Script [[-ScriptNameOrPath] <string>] [-Synopsis <string>] [-Description <string>]
- [-Link <string>] [<CommonParameters>]
+New-ModuleDirectory [-ModuleName] <string> [-ParentPath <string>] [-Author <string>]
+ [-Description <string>] [-CompanyName <string>] [-ModuleVersion <string>]
+ [-CompatiblePSEditions <string[]>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -31,57 +32,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Create new Powershell script file containing a basic template.
-Takes a script name or a path to where the new script file should be created.
-A path name should include the desired script file name itself.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1
 
-New-Script
-Creates a new script in the current directory with filler default options.
-
-### EXAMPLE 2
-
-New-Script Get-ExampleScript
-Creates a new script in the current directory with the name Get-ExampleScript.ps1.
-
-### EXAMPLE 3
-
-New-Script Folder\Here\Get-ExampleScript.ps1
-Creates a new script named Get-ExampleScript at the relative
-path "Folder\Here\Get-ExampleScript.ps1"
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Description
+### -Author
 
-String that populates the Description text.
-Defaults to filler.
-
-```yaml
-Type: System.String
-DefaultValue: Description for new script
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Link
-
-String that populates the Link text.
-Defaults to a generic URL.
-If the variable $SAT2_Var.NewScriptLink is set, it will use that instead.
+{{ Fill Author Description }}
 
 ```yaml
 Type: System.String
@@ -100,20 +63,18 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -ScriptNameOrPath
+### -CompanyName
 
-First position argument, takes a string with the desired script name or a path
-for the new script file.
-Path can be relative or absolute.
+{{ Fill CompanyName Description }}
 
 ```yaml
 Type: System.String
-DefaultValue: New-ExampleScript
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: 0
+  Position: Named
   IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
@@ -123,14 +84,97 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Synopsis
+### -CompatiblePSEditions
 
-String that populates the Synopsis text.
-Defaults to filler.
+{{ Fill CompatiblePSEditions Description }}
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Description
+
+{{ Fill Description Description }}
 
 ```yaml
 Type: System.String
-DefaultValue: Synopsis for new script
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -ModuleName
+
+{{ Fill ModuleName Description }}
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -ModuleVersion
+
+{{ Fill ModuleVersion Description }}
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -ParentPath
+
+{{ Fill ParentPath Description }}
+
+```yaml
+Type: System.String
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -156,8 +200,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Object
+
+{{ Fill in the Description }}
+
 ## NOTES
+
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [](https://github.com/mriechmanbennett/security-admin-tools/)
+{{ Fill in the related links here }}
+

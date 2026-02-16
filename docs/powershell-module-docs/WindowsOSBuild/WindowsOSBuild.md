@@ -5,7 +5,7 @@ HelpInfoUri:
 Locale: en-US
 Module Guid: 5dd6f8b2-e87f-45a4-bc6a-db876bc3cc2d
 Module Name: WindowsOSBuild
-ms.date: 01/26/2026
+ms.date: 02/15/2026
 PlatyPS schema version: 2024-05-01
 title: WindowsOSBuild Module
 ---

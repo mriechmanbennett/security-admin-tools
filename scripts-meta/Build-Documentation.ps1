@@ -37,7 +37,6 @@ param(
 
 # Install PlatyPS
 # Install-PSResource -Name Microsoft.PowerShell.PlatyPS
-
 try { Import-Module -Name Microsoft.PowerShell.PlatyPS }
 catch { Write-Host "platyPS module could not be imported"; exit }
 finally { Write-Host "Imported platyPS module" }
@@ -61,8 +60,9 @@ foreach ($ModuleName in $ModuleList) {
         ModuleInfo = Get-Module -Name $ModuleName
         OutputFolder = $PSModuleDocsPath
         WithModulePage = $true
+        Force = $true
     }
-    New-MarkdownCommandHelp -Force @newMarkdownCommandHelpSplat
+    New-MarkdownCommandHelp @newMarkdownCommandHelpSplat
 }
 
 # Write parent README.md

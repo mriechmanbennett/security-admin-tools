@@ -4,7 +4,7 @@ external help file: WindowsOSBuild-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: WindowsOSBuild
-ms.date: 01/26/2026
+ms.date: 02/15/2026
 PlatyPS schema version: 2024-05-01
 title: Get-CurrentOSBuild
 ---

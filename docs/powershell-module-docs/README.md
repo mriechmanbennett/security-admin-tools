@@ -6,6 +6,7 @@ This README and docs are managed via [script](../../scripts-meta/Build-Documenta
 
 ## Index
 
+- [MSCatalogLTS](./MSCatalogLTS/MSCatalogLTS.md)
 - [SecurityAdminTools.Utilities](./SecurityAdminTools.Utilities/SecurityAdminTools.Utilities.md)
 - [SecurityAdminTools.WindowsDefenderConfigurationManagement](./SecurityAdminTools.WindowsDefenderConfigurationManagement/SecurityAdminTools.WindowsDefenderConfigurationManagement.md)
 - [SecurityAdminTools.WindowsLogCollection](./SecurityAdminTools.WindowsLogCollection/SecurityAdminTools.WindowsLogCollection.md)
