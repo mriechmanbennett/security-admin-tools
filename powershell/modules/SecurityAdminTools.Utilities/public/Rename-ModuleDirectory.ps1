@@ -37,7 +37,7 @@ function Rename-ModuleDirectory {
 
     $OldName = (Get-Item $Path).Name
 
-    Get-Content -ReadCount 0 -Path "$Path/$OldName.psd1" | ForEach-Object { $_ -replace $OldName, $NewName } | Set-Content  -Path "$Path/$OldName.psd1"
+    Get-Content -ReadCount 0 -Path "$Path/$OldName.psd1" | ForEach-Object { $_ -replace $OldName, $NewName } | Set-Content -Path "$Path/$OldName.psd1"
 
     Rename-Item -Path "$Path/$OldName.psm1" -NewName "$NewName.psm1"
     Rename-Item -Path "$Path/$OldName.psd1" -NewName "$NewName.psd1"
