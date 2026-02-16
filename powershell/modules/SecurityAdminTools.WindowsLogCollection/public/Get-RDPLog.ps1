@@ -1,4 +1,4 @@
-function Get-RDPLogs() {
+function Get-RDPLog() {
 	<#
     .SYNOPSIS
         Pull RDP logs from a computer
@@ -13,10 +13,10 @@ function Get-RDPLogs() {
         Specify the number of most recent results to return
 
     .EXAMPLE
-        Get-RDPLogs
+        Get-RDPLog
 
     .EXAMPLE
-        Get-RDPLogs -Computer remote-host
+        Get-RDPLog -Computer remote-host
 
 		Gets logs from computer named 'remote-host'
 

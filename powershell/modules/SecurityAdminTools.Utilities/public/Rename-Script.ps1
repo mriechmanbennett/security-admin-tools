@@ -36,8 +36,8 @@ function Rename-Script {
         exit
     }
 
-    $OldName = (Get-Item $Path).Name
+    $OldName = ((Get-Item $Path).Name).Replace(".ps1","")
 
     Get-Content -ReadCount 0 -Path $Path | ForEach-Object { $_ -replace $OldName, $NewName } | Set-Content -Path $Path
-    Rename-Item -Path $Path -NewName $NewName
+    Rename-Item -Path $Path -NewName "$NewName.ps1"
 }
