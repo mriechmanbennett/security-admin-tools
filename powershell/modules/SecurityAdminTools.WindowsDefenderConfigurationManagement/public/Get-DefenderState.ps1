@@ -38,7 +38,7 @@ function Get-DefenderState() {
 		Write-Verbose "[BEGIN  ] $FunctionName"
 		Write-Verbose "[BEGIN  ] StartTime = $StartTime"
 
-		# Set script block to execute remotely
+		# Set script block to execute remotely during the process block
 		$MpPreferenceScriptBlock = {
 			Write-Verbose "[PROCESS] Get-MpComputerStatus"
 			$MpStatus = Get-MpComputerStatus

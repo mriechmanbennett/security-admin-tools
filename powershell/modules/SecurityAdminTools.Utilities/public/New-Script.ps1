@@ -106,8 +106,8 @@ function New-Script() {
     }
 
 
-    $ScriptTemplate =
-"function $ScriptName {
+    $ScriptTemplate = @"
+function $ScriptName {
     <#
     .SYNOPSIS
         $Synopsis
@@ -133,8 +133,12 @@ function New-Script() {
     #>
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory=`$false,Position=0)]
-        [string]`$Example = `"Example`",
+        [Parameter(
+            Mandatory=`$false,
+            ValueFromPipeline=`$true,
+            Position=0
+            )]
+        [string[]]`$InputObject = `"ExampleValue`",
 
         [Parameter(Mandatory=`$false)]
         [ValidateSet('One','Two','Three','All')]
@@ -142,9 +146,36 @@ function New-Script() {
     )
 
     #------------ Script start ------------#
-    # Delete this comment and add the script here
+    BEGIN {
+        `$FunctionName = `"$ScriptName`"
+		`$StartTime = Get-Date
+        `$CurrentID = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+        `$IsAdmin = [System.Security.Principal.WindowsPrincipal]::new(`$CurrentID).IsInRole(`'administrators`')
+		Write-Verbose `"[BEGIN  ] Starting:   `$FunctionName`"
+        Write-Verbose `"[BEGIN  ] User:       `$CurrentID.Name`"
+        Write-Verbose `"[BEGIN  ] Computer    `$env:COMPUTERNAME`"
+        Write-Verbose `"[BEGIN  ] Is Admin:   `$IsAdmin`"
+        Write-Verbose `"[BEGIN  ] OS:         `$((Get-CimInstance Win32_Operatingsystem).Caption)`"
+        Write-Verbose `"[BEGIN  ] OS Version: `$((Get-CimInstance Win32_Operatingsystem).Version)`"
+		Write-Verbose `"[BEGIN  ] StartTime = `$StartTime`"
+    }
 
-}"
+    PROCESS {
+        foreach ( `$Item in `$InputObject ) {
+			Write-Verbose "[PROCESS] Process `$Item at `$(Get-Date)"
+		}
+    }
+
+    END {
+        `$EndTime = Get-Date
+		`$TimeSpan = New-TimeSpan -Start `$StartTime -End `$EndTime
+		Write-Verbose `"[END    ] EndTime = `$EndTime`"
+		Write-Verbose `"[END    ] RunTime = `$TimeSpan`"
+		Write-Verbose `"[END    ] `$FunctionName`"
+    }
+
+}
+"@
 
 
     $ScriptTemplate | Out-File -FilePath $ScriptPath
