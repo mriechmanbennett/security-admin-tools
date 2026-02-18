@@ -6,14 +6,14 @@ function Get-AVExclusion() {
     .DESCRIPTION
         Get Defender AV exclusions from a computer
 
-    .PARAMETER Computer
-        Computer from which to retrieve configuration
+    .PARAMETER ComputerName
+        Computers from which to retrieve configuration
 
     .EXAMPLE
         Get-AVExclusion
 
     .EXAMPLE
-        Get-AVExclusion -Computer remote-host
+        Get-AVExclusion -ComputerName remote-host
 
 		Gets configuration from computer named 'remote-host'
 
@@ -24,18 +24,53 @@ function Get-AVExclusion() {
 
 	[CmdletBinding()]
 	param(
-		[Parameter(Mandatory=$false)]
-		[String]$Computer = $env:COMPUTERNAME
+		[Parameter(
+			Mandatory=$false,
+			ValueFromPipeline=$true
+		)]
+		[String[]]$ComputerName = $env:COMPUTERNAME
 	)
 
-	$Preferences = $null
-	if ($Computer -eq $env:COMPUTERNAME) {
-		$Preferences = Get-MpPreference
+	BEGIN {
+		$FunctionName = 'Get-AvExclusion'
+		$StartTime = Get-Date
+		Write-Verbose "[BEGIN  ] $FunctionName"
+		Write-Verbose "[BEGIN  ] StartTime = $StartTime"
 	}
-	else {
-		$RemoteSession = New-CimSession -ComputerName $Computer
-		$Preferences = Get-MpPreference -CimSession $RemoteSession
+
+	PROCESS {
+		foreach ( $Computer in $ComputerName ) {
+			Write-Verbose "[PROCESS] Process $Computer at $(Get-Date)"
+			$ComputerDefenderState = Get-DefenderState -ComputerName $Computer
+			$AvExclusionPath = $ComputerDefenderState.MpPreference | Select-Object -ExpandProperty ExclusionPath
+			$AvExclusionExtension = $ComputerDefenderState.MpPreference | Select-Object -ExpandProperty ExclusionExtension
+			$AvExclusionProcess = $ComputerDefenderState.MpPreference | Select-Object -ExpandProperty ExclusionProcess
+			$AvExclusionIpAddress = $ComputerDefenderState.MpPreference | Select-Object -ExpandProperty ExclusionIpAddress
+			$HostName = $ComputerDefenderState.HostName
+
+			$DefenderExclusionProperties = @{
+				'HostName' = $HostName
+				'AvExclusionPath' = $AvExclusionPath
+				'AvExclusionExtension' = $AvExclusionExtension
+				'AvExclusionProcess' = $AvExclusionProcess
+				'AvExclusionIpAddress' = $AvExclusionIpAddress
+			}
+
+			$DefenderExclusions = [pscustomobject]$DefenderExclusionProperties
+			Write-Output $DefenderExclusions
+		}
 	}
+
+	END {
+		$EndTime = Get-Date
+		$TimeSpan = New-TimeSpan -Start $StartTime -End $EndTime
+		Write-Verbose "[END    ] EndTime = $EndTime"
+		Write-Verbose "[END    ] RunTime = $TimeSpan"
+		Write-Verbose "[END    ] $FunctionName"
+	}
+
+}
+<# Original script
 
 	# Display the ExclusionPath list
 	Write-Host "Exclusion Paths:"
@@ -65,4 +100,5 @@ function Get-AVExclusion() {
 	else { 
 		Write-Host "No exclusion extensions configured." 
 	} 
-}
+
+#>
