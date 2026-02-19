@@ -57,7 +57,7 @@ function Get-AVExclusion() {
 			}
 
 			$DefenderAVExclusions = [pscustomobject]$DefenderExclusionProperties
-			$DefenderAVExclusions.PSObject.TypeNames.Insert(0,'SecurityAdminTools.Windows.Defender.Exclusion.Antivirus')
+			$DefenderAVExclusions.PSObject.TypeNames.Insert(0,'SecurityAdminTools.WindowsDefender.Exclusion.Antivirus')
 			Write-Output $DefenderAVExclusions
 		}
 	}

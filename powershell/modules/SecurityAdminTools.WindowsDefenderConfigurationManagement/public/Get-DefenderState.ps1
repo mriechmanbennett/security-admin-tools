@@ -60,7 +60,7 @@ function Get-DefenderState() {
 
 			Write-Verbose "[PROCESS] Return state"
 			$DefenderState = [pscustomobject]$DefenderProperties
-			$DefenderState.PSObject.TypeNames.Insert(0,'SecurityAdminTools.Windows.Defender.State')
+			$DefenderState.PSObject.TypeNames.Insert(0,'SecurityAdminTools.WindowsDefender.State')
 			return $DefenderState
 		}
 	}

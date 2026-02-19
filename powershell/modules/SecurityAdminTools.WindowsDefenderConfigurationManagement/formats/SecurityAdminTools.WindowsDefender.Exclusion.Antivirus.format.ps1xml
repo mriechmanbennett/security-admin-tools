@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+
+  <!-- Correct usage: EnumerableExpansion lives under DefaultSettings -->
+  <DefaultSettings>
+    <EnumerableExpansions>
+      <EnumerableExpansion>
+        <EntrySelectedBy>
+          <!-- Applies to string arrays -->
+          <TypeName>System.String[]</TypeName>
+        </EntrySelectedBy>
+
+        <!-- Expand behavior: EnumOnly | CoreOnly | Both -->
+        <Expand>EnumOnly</Expand>
+      </EnumerableExpansion>
+    </EnumerableExpansions>
+  </DefaultSettings>
+
+  <ViewDefinitions>
+    <View>
+      <Name>SecurityAdminTools.WindowsDefender.Exclusion.Antivirus</Name>
+
+      <ViewSelectedBy>
+        <TypeName>SecurityAdminTools.WindowsDefender.Exclusion.Antivirus</TypeName>
+      </ViewSelectedBy>
+
+      <TableControl>
+        <AutoSize />
+
+        <TableHeaders>
+          <TableColumnHeader><Label>HostName</Label></TableColumnHeader>
+          <TableColumnHeader><Label>Paths</Label></TableColumnHeader>
+          <TableColumnHeader><Label>Extensions</Label></TableColumnHeader>
+          <TableColumnHeader><Label>Processes</Label></TableColumnHeader>
+          <TableColumnHeader><Label>IP Addresses</Label></TableColumnHeader>
+        </TableHeaders>
+
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>HostName</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>AvExclusionPath</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>AvExclusionExtension</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>AvExclusionProcess</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>AvExclusionIpAddress</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+
+      </TableControl>
+
+    </View>
+  </ViewDefinitions>
+
+</Configuration>
