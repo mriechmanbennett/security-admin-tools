@@ -56,8 +56,9 @@ function Get-AVExclusion() {
 				'AvExclusionIpAddress' = $AvExclusionIpAddress
 			}
 
-			$DefenderExclusions = [pscustomobject]$DefenderExclusionProperties
-			Write-Output $DefenderExclusions
+			$DefenderAVExclusions = [pscustomobject]$DefenderExclusionProperties
+			$DefenderAVExclusions.PSObject.TypeNames.Insert(0,'SecurityAdminTools.Windows.Defender.Exclusion.Antivirus')
+			Write-Output $DefenderAVExclusions
 		}
 	}
 
