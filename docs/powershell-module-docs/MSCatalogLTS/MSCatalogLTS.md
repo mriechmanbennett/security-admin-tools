@@ -5,7 +5,7 @@ HelpInfoUri:
 Locale: en-US
 Module Guid: 721ac2a2-e4b6-4948-9c22-6ad2a52c0de6
 Module Name: MSCatalogLTS
-ms.date: 02/15/2026
+ms.date: 02/18/2026
 PlatyPS schema version: 2024-05-01
 title: MSCatalogLTS Module
 ---

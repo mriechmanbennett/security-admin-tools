@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
-external help file: SecurityAdminTools.WindowsUpdateManagement-Help.xml
+external help file: SecurityAdminTools.Utilities-Help.xml
 HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
 Locale: en-US
-Module Name: SecurityAdminTools.WindowsUpdateManagement
+Module Name: SecurityAdminTools.Utilities
 ms.date: 02/18/2026
 PlatyPS schema version: 2024-05-01
-title: Get-PatchStatus
+title: Rename-Script
 ---
 
-# Get-PatchStatus
+# Rename-Script
 
 ## SYNOPSIS
 
-Get patch status for one or many computers
+Rename an existing script file created with New-Script
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-PatchStatus [[-ComputerName] <string[]>] [<CommonParameters>]
+Rename-Script [-Path] <string> [-NewName] <string> [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,38 +30,50 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get patch status for one or many computers
+Rename an existing script file created with New-Script
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-PatchStatus
-
-### EXAMPLE 2
-
-Get-PatchStatus -Computer localhost
-
-Get patch status for the local computer
+Rename-Script Old-Name.ps1 New-Name.ps1
 
 ## PARAMETERS
 
-### -ComputerName
+### -NewName
 
-Computers to check for patch status
+New name for the script/cmdlet
 
 ```yaml
-Type: System.String[]
-DefaultValue: localhost
+Type: System.String
+DefaultValue: ''
 SupportsWildcards: false
-Aliases:
-- Computer
-- Host
-- Hostname
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Path
+
+Path of the script file to rename
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
 ParameterSets:
 - Name: (All)
   Position: 0
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

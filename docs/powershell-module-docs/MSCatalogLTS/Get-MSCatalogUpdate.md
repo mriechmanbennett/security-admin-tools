@@ -4,7 +4,7 @@ external help file: MSCatalogLTS-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: MSCatalogLTS
-ms.date: 02/15/2026
+ms.date: 02/18/2026
 PlatyPS schema version: 2024-05-01
 title: Get-MSCatalogUpdate
 ---

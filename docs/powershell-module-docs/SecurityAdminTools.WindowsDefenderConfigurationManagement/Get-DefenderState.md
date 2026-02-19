@@ -4,23 +4,23 @@ external help file: SecurityAdminTools.WindowsDefenderConfigurationManagement-He
 HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
 Locale: en-US
 Module Name: SecurityAdminTools.WindowsDefenderConfigurationManagement
-ms.date: 02/15/2026
+ms.date: 02/18/2026
 PlatyPS schema version: 2024-05-01
-title: Get-AVExclusions
+title: Get-DefenderState
 ---
 
-# Get-AVExclusions
+# Get-DefenderState
 
 ## SYNOPSIS
 
-Get Defender AV exclusions from a computer
+Get Defender settings and status from a computer
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-AVExclusions [[-Computer] <string>] [<CommonParameters>]
+Get-DefenderState [[-ComputerName] <string[]>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,28 +30,29 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get Defender AV exclusions from a computer
+Get Defender settings and status from a computer
+Creates a combined object with all information
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-AVExclusions
+Get-DefenderState
 
 ### EXAMPLE 2
 
-Get-AVExclusions -Computer remote-host
+Get-DefenderState -ComputerName remote-host
 
 Gets configuration from computer named 'remote-host'
 
 ## PARAMETERS
 
-### -Computer
+### -ComputerName
 
-Computer from which to retrieve configuration
+Computers from which to retrieve configuration
 
 ```yaml
-Type: System.String
+Type: System.String[]
 DefaultValue: $env:COMPUTERNAME
 SupportsWildcards: false
 Aliases: []
@@ -59,7 +60,7 @@ ParameterSets:
 - Name: (All)
   Position: 0
   IsRequired: false
-  ValueFromPipeline: false
+  ValueFromPipeline: true
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 DontShow: false
@@ -75,6 +76,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String[]
+
+{{ Fill in the Description }}
 
 ## OUTPUTS
 

@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
-external help file: SecurityAdminTools.WindowsDefenderConfigurationManagement-Help.xml
+external help file: SecurityAdminTools.WindowsLogCollection-Help.xml
 HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
 Locale: en-US
-Module Name: SecurityAdminTools.WindowsDefenderConfigurationManagement
-ms.date: 02/15/2026
+Module Name: SecurityAdminTools.WindowsLogCollection
+ms.date: 02/18/2026
 PlatyPS schema version: 2024-05-01
-title: Get-ASRExclusions
+title: Get-RDPLog
 ---
 
-# Get-ASRExclusions
+# Get-RDPLog
 
 ## SYNOPSIS
 
-Get Defender ASR exclusions from a computer
+Pull RDP logs from a computer
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-ASRExclusions [[-Computer] <string>] [<CommonParameters>]
+Get-RDPLog [[-Limit] <int>] [[-Computer] <string>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,29 +30,51 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Get Defender ASR exclusions from a computer
+Pull RDP logs from a computer
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-ASRExclusions
+Get-RDPLog
 
 ### EXAMPLE 2
 
-Get-ASRExclusions -Computer remote-host
+Get-RDPLog -Computer remote-host
 
-Gets configuration from computer named 'remote-host'
+Gets logs from computer named 'remote-host'
 
 ## PARAMETERS
 
 ### -Computer
 
-Computer from which to retrieve configuration
+Computer from which to retrieve logs.
+Defaults to the local device
 
 ```yaml
 Type: System.String
 DefaultValue: $env:COMPUTERNAME
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Limit
+
+Specify the number of most recent results to return
+
+```yaml
+Type: System.Int32
+DefaultValue: 0
 SupportsWildcards: false
 Aliases: []
 ParameterSets:

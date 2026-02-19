@@ -5,7 +5,7 @@ HelpInfoUri:
 Locale: en-US
 Module Guid: d533bc3e-326d-4161-a8cb-3619d17f7193
 Module Name: SecurityAdminTools.Utilities
-ms.date: 02/15/2026
+ms.date: 02/18/2026
 PlatyPS schema version: 2024-05-01
 title: SecurityAdminTools.Utilities Module
 ---
@@ -33,4 +33,12 @@ Create a new Powershell module directory skeleton
 ### [New-Script](New-Script.md)
 
 Create new Powershell script file containing a basic template.
+
+### [Rename-ModuleDirectory](Rename-ModuleDirectory.md)
+
+Rename a module directory created with New-ModuleDirectory
+
+### [Rename-Script](Rename-Script.md)
+
+Rename an existing script file created with New-Script
 

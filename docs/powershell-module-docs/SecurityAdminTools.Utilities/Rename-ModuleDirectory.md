@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
-external help file: SecurityAdminTools.WindowsLogCollection-Help.xml
+external help file: SecurityAdminTools.Utilities-Help.xml
 HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
 Locale: en-US
-Module Name: SecurityAdminTools.WindowsLogCollection
-ms.date: 02/15/2026
+Module Name: SecurityAdminTools.Utilities
+ms.date: 02/18/2026
 PlatyPS schema version: 2024-05-01
-title: Get-RDPLogs
+title: Rename-ModuleDirectory
 ---
 
-# Get-RDPLogs
+# Rename-ModuleDirectory
 
 ## SYNOPSIS
 
-Pull RDP logs from a computer
+Rename a module directory created with New-ModuleDirectory
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-RDPLogs [[-Limit] <int>] [[-Computer] <string>] [<CommonParameters>]
+Rename-ModuleDirectory [-Path] <string> [-NewName] <string> [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,36 +30,31 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Pull RDP logs from a computer
+Rename a module directory created with New-ModuleDirectory
+Takes a path to the module directory
+Updates the folder and file names and updates the module name within files.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-RDPLogs
-
-### EXAMPLE 2
-
-Get-RDPLogs -Computer remote-host
-
-Gets logs from computer named 'remote-host'
+Rename-ModuleDirectory Test-Module
 
 ## PARAMETERS
 
-### -Computer
+### -NewName
 
-Computer from which to retrieve logs.
-Defaults to the local device
+{{ Fill NewName Description }}
 
 ```yaml
 Type: System.String
-DefaultValue: $env:COMPUTERNAME
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: 1
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
@@ -68,19 +63,19 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -Limit
+### -Path
 
-Specify the number of most recent results to return
+Example parameter
 
 ```yaml
-Type: System.Int32
-DefaultValue: 0
+Type: System.String
+DefaultValue: ''
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: 0
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

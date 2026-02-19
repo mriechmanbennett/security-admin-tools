@@ -1,26 +1,26 @@
 ---
 document type: cmdlet
-external help file: WindowsOSBuild-Help.xml
-HelpUri: ''
+external help file: SecurityAdminTools.WindowsDefenderConfigurationManagement-Help.xml
+HelpUri: https://github.com/mriechmanbennett/security-admin-tools/
 Locale: en-US
-Module Name: WindowsOSBuild
+Module Name: SecurityAdminTools.WindowsDefenderConfigurationManagement
 ms.date: 02/18/2026
 PlatyPS schema version: 2024-05-01
-title: Get-CurrentOSBuild
+title: Get-AVExclusion
 ---
 
-# Get-CurrentOSBuild
+# Get-AVExclusion
 
 ## SYNOPSIS
 
-Gets the currently installed OS Build release information. Supports Windows 10 and Windows Server 2016 onwards. Supports Hotpatch on Windows 11 and Windows Server 2022.
+Get Defender AV exclusions from a computer
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-CurrentOSBuild [-Detailed] [<CommonParameters>]
+Get-AVExclusion [[-ComputerName] <string[]>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -30,37 +30,36 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Installed OS Build number or detailed information (Version, Build, Availability date, Hotpatch, Preview, Out-of-band, Servicing option, KB article, KB URL and Catalog URL).
+Get Defender AV exclusions from a computer
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Get-CurrentOSBuild
-Show only the build number for the installed OS Build.
+Get-AVExclusion
 
 ### EXAMPLE 2
 
-Get-CurrentOSBuild -Detailed
-Show detailed information for the installed OS Build.
+Get-AVExclusion -ComputerName remote-host
+
+Gets configuration from computer named 'remote-host'
 
 ## PARAMETERS
 
-### -Detailed
+### -ComputerName
 
-This parameter is optional.
-Returns detailed information about the installed OS Build.
+Computers from which to retrieve configuration
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
+Type: System.String[]
+DefaultValue: $env:COMPUTERNAME
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
-  Position: Named
+  Position: 0
   IsRequired: false
-  ValueFromPipeline: false
+  ValueFromPipeline: true
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 DontShow: false
@@ -77,11 +76,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String[]
+
+{{ Fill in the Description }}
+
 ## OUTPUTS
 
 ## NOTES
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
-
+- [](https://github.com/mriechmanbennett/security-admin-tools/)
