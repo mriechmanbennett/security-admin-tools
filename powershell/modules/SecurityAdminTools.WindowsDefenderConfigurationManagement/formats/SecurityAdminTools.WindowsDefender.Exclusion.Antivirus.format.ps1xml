@@ -24,30 +24,26 @@
         <TypeName>SecurityAdminTools.WindowsDefender.Exclusion.Antivirus</TypeName>
       </ViewSelectedBy>
 
-      <TableControl>
-        <AutoSize />
-
-        <TableHeaders>
-          <TableColumnHeader><Label>HostName</Label></TableColumnHeader>
-          <TableColumnHeader><Label>Paths</Label></TableColumnHeader>
-          <TableColumnHeader><Label>Extensions</Label></TableColumnHeader>
-          <TableColumnHeader><Label>Processes</Label></TableColumnHeader>
-          <TableColumnHeader><Label>IP Addresses</Label></TableColumnHeader>
-        </TableHeaders>
-
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem><PropertyName>HostName</PropertyName></TableColumnItem>
-              <TableColumnItem><PropertyName>AvExclusionPath</PropertyName></TableColumnItem>
-              <TableColumnItem><PropertyName>AvExclusionExtension</PropertyName></TableColumnItem>
-              <TableColumnItem><PropertyName>AvExclusionProcess</PropertyName></TableColumnItem>
-              <TableColumnItem><PropertyName>AvExclusionIpAddress</PropertyName></TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-
-      </TableControl>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>HostName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>AvExclusionPath</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>AvExclusionExtension</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>AvExclusionProcess</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
 
     </View>
   </ViewDefinitions>
