@@ -24,10 +24,51 @@ function Get-ASRExclusion() {
 
 	[CmdletBinding()]
 	param(
-		[Parameter(Mandatory=$false)]
-		[String]$Computer = $env:COMPUTERNAME
+		[Parameter(
+			Mandatory=$false,
+			ValueFromPipeline=$true
+		)]
+		[String[]]$ComputerName = $env:COMPUTERNAME
 	)
 
+	BEGIN {
+		$FunctionName = 'Get-ASRExclusion'
+		$StartTime = Get-Date
+		Write-Verbose "[BEGIN  ] $FunctionName"
+		Write-Verbose "[BEGIN  ] StartTime = $StartTime"
+	}
+
+	PROCESS {
+		foreach ( $Computer in $ComputerName ) {
+			Write-Verbose "[PROCESS] Process $Computer at $(Get-Date)"
+			
+			$ComputerDefenderState = Get-DefenderState -ComputerName $Computer
+			$AttackSurfaceReductionOnlyExclusions = $ComputerDefenderState.MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionOnlyExclusions
+			$AttackSurfaceReductionRules_RuleSpecificExclusions = $ComputerDefenderState.MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_RuleSpecificExclusions
+			$HostName = $ComputerDefenderState.HostName
+
+			$DefenderExclusionProperties = @{
+				'HostName' = $HostName
+				'AttackSurfaceReductionOnlyExclusions' = $AttackSurfaceReductionOnlyExclusions
+				'AttackSurfaceReductionRules_RuleSpecificExclusions' = $AttackSurfaceReductionRules_RuleSpecificExclusions
+			}
+
+			$DefenderAsrExclusions = [pscustomobject]$DefenderExclusionProperties
+			$DefenderAsrExclusions.PSObject.TypeNames.Insert(0,'SecurityAdminTools.WindowsDefender.Exclusion.ASR')
+			Write-Output $DefenderAsrExclusions
+		}
+	}
+
+	END {
+		$EndTime = Get-Date
+		$TimeSpan = New-TimeSpan -Start $StartTime -End $EndTime
+		Write-Verbose "[END    ] EndTime = $EndTime"
+		Write-Verbose "[END    ] RunTime = $TimeSpan"
+		Write-Verbose "[END    ] $FunctionName"
+	}
+
+
+	<# Original script
 	$Preferences = $null
 	if ($Computer -eq $env:COMPUTERNAME){
 		$Preferences = Get-MpPreference
@@ -56,4 +97,5 @@ function Get-ASRExclusion() {
 		Write-Host "No ASR general exclusions configured."
 	}
 	Write-Host ""
+	#>
 }

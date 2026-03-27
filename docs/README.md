@@ -6,8 +6,9 @@ Someone should probably write documentation here.
 
 Credit and [license information](licensed-code.md) for third-party code used in this project
 
-## Powershell Module Documentation
+## Powershell Documentation
 
-Generated via PlatyPS script
+Module docs generated via PlatyPS script
+Scripts are not yet documented.
 
 [Powershell Module Docs](./powershell-module-docs/README.md)
