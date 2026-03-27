@@ -69,37 +69,4 @@ function Get-AVExclusion() {
 		Write-Verbose "[END    ] RunTime = $TimeSpan"
 		Write-Verbose "[END    ] $FunctionName"
 	}
-
 }
-<# Original script
-
-	# Display the ExclusionPath list
-	Write-Host "Exclusion Paths:"
-	if ($Preferences.ExclusionPath) {
-		$Preferences.ExclusionPath | ForEach-Object { Write-Host "- $_" }
-	}
-	else {
-		Write-Host "No exclusion paths configured."
-	}
-	Write-Host ""
-
-	# Display the ExclusionProcess list 
-	Write-Host "Exclusion Processes:" 
-	if ($Preferences.ExclusionProcess) { 
-		$Preferences.ExclusionProcess | ForEach-Object { Write-Host "- $_" } 
-	}
-	else {
-		Write-Host "No exclusion processes configured." 
-	} 
-	Write-Host "" 
-
-	# Display the ExclusionExtension list 
-	Write-Host "Exclusion Extensions:" 
-	if ($Preferences.ExclusionExtension) { 
-		$Preferences.ExclusionExtension | ForEach-Object { Write-Host "- $_" } 
-	}
-	else { 
-		Write-Host "No exclusion extensions configured." 
-	} 
-
-#>
