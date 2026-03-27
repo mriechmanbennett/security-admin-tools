@@ -1,7 +1,31 @@
+<#
+.SYNOPSIS
+    Install modules and add imports to profile
+
+.DESCRIPTION
+    Install modules and add imports to profile.
+    They need to be imported each time to avoid the issue of pwsh not auto-importing modules with prefixes:
+    https://github.com/PowerShell/PowerShell/issues/24743
+
+.PARAMETER Clean
+    Explicitly delete old module files before copying the new ones over
+
+.PARAMETER System
+    Set this variable to install for all users and add to the AllUsersAllHosts profile instead of to the CurrentUserAllHosts profile
+
+.NOTES
+    This does not work for a normal user if there is a MyDocuments redirect configured.
+    Need to figure that out but tbd
+
+.LINK
+    https://github.com/mriechmanbennett/security-admin-tools/
+
+#>
+
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $false, Position = 0)]
-    [String]$Scope = "user",
+    [Parameter(Mandatory = $false)]
+    [Switch]$System,
 
     [Parameter(Mandatory=$false)]
     [switch]$Clean
@@ -14,7 +38,7 @@ $ModulesPath = "powershell\modules"
 
 # If Powershell 6+
 if ($PSVersionTable.PSEdition -eq 'Core') {
-    $InstallPath = if ($Scope -eq "system") { 
+    $InstallPath = if ($System -eq $true) { 
         "$Env:ProgramFiles\PowerShell\Modules\"
     }
     else {
@@ -24,7 +48,7 @@ if ($PSVersionTable.PSEdition -eq 'Core') {
 
 # If Powershell 5.1
 if ($PSVersionTable.PSEdition -eq 'Desktop') {
-    $InstallPath = if ($Scope -eq "system") { 
+    $InstallPath = if ($System -eq $true) { 
         "$Env:ProgramFiles\WindowsPowerShell\Modules\"
     }
     else {
@@ -40,7 +64,7 @@ if ($PSVersionTable.PSVersion -lt [Version]'5.1') {
     $ContinueAnyway = Read-Host -Prompt "Type 'continue' to install anyway or anything else to exit:"
     
     if ($ContinueAnyway -eq 'continue') {
-        $InstallPath = if ($Scope -eq "system") { 
+        $InstallPath = if ($System -eq $true) { 
         "$Env:ProgramFiles\WindowsPowerShell\Modules\"
         }
         else {
@@ -59,7 +83,7 @@ if ($Clean) {
 }
 
 # Install modules and import them in the desired profile
-$ProfilePath = if ($Scope -eq "system") {
+$ProfilePath = if ($System -eq $true) {
     $PROFILE.AllUsersAllHosts
 }
 else { $PROFILE.CurrentUserAllHosts }
@@ -76,9 +100,6 @@ foreach ($Folder in $ModuleFolders) {
 # Import modules into current session
 Import-Module -Name $ModuleNames -Force
 
-
-<# Commenting out, not needed
-
 # Create Profile if it doesn't exist
 if (!(Test-Path -Path $ProfilePath )) { New-Item -Type File -Path $ProfilePath -Force }
 
@@ -94,7 +115,6 @@ foreach ($NewModule in $ModuleNames) {
     if (!$LineFound) { $ImportLine | out-file $ProfilePath -append }
 }
 
-#>
 
 # Send us back to the original directory the script was called from
 Set-Location $StartDirectory
